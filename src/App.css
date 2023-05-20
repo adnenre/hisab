@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app_container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+}
+.screen,
+.keyboard {
+ 
+  
+  width: 70%;
+  
+}
+.screen{
+  text-align:right;
+  font-size:1.5rem;
+  border: none;
+  background: #e5e5e5;
+  padding:1rem;
+  
+}
+.screen_number{
+  text-align:right;
+  font-size:1.5rem;
+  border: none;
+  
+  padding:1rem;
+  
+}
+.letters_container {
+  flex: 0 0 100%;
+  order: 1;
+  background: moccasin;
+  width: 30%;
+}
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  padding: auto;
+  background-color: white;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
 }
-
-.App-link {
-  color: #61dafb;
+.keyboard_key {
+  width: 80px;
+  height: 80px;
+  margin: 0.2rem;
+  padding: 0.5rem, 0.5rem;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border:none;
+  border-color :#fff;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.keyboard_key:hover {
+  position: relative;
+  top: 1px;
+  left: 1px;
+  border-color: #e5e5e5;
+  cursor: pointer;
+}
+.letter_container {
+  display: inline-block;
+  text-align: center;
+  margin: 1rem;
+  font-size: 1rem;
+}
+.letter_input {
+  display: inline-block;
+  width: 50px;
+  padding: 0.5rem, 0.5rem;
+  vertical-align: middle;
+}
+.keyboard_row{
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+.key_space{
+  display: block;
+  width:100%;
 }
