@@ -44,7 +44,7 @@ const Keyboard = () => {
       setSelectedLetter(newSelectedLetters);
       setTextAreaValueNumber(total);
     } catch (error) {
-      alert('يرجى استعمال احرف عربية غير مشكولة');
+      alert("يرجى استعمال احرف عربية غير مشكولة");
     }
   };
   useEffect(() => {
@@ -67,18 +67,22 @@ const Keyboard = () => {
       <p className="screen_number"> {textAreaValueNumber}</p>
 
       <div className="letters_container">
-        {initialData?.map(({ item, value }) => (
-          <div key={item} className="letter_container">
-            <input
-              className="letter_input"
-              value={value}
-              type="number"
-              name={item}
-              onChange={handleChange}
-            />
-            <p className="letter_input">{item}</p>
-          </div>
-        ))}
+        {initialData?.map(({ name ,item, value }) => {
+          if (name !== "space") {
+            return (
+              <div key={item} className="letter_container">
+                <input
+                  className="letter_input"
+                  value={value}
+                  type="number"
+                  name={item}
+                  onChange={handleChange}
+                />
+                <p className="letter_input">{item}</p>
+              </div>
+            );
+          }
+        })}
       </div>
       <div className="keyboard">
         {initialData?.map(({ name, item, value }) => {
