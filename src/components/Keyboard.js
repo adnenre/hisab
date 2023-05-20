@@ -37,7 +37,8 @@ const Keyboard = () => {
       if (textAreaValue) {
         for (let i = 0; i < [...textAreaValue].length; i++) {
           let letter = data.find((l) => l.item === [...textAreaValue][i]);
-          total += letter.value;
+          total += parseInt(letter.value);
+          console.log(total)
           newSelectedLetters.push(letter);
         }
       }
