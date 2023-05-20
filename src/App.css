@@ -96,7 +96,7 @@
     
   }
   .keyboard{
-
+     display: none;
   }
   .keyboard_key {
     display: inline-block;

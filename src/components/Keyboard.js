@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import data from "../data";
 const Keyboard = () => {
+  const textAreaRef = useRef(null);
   const [selectedLetter, setSelectedLetter] = useState([]);
   const [textAreaValue, setTextAreaValue] = useState("");
   const [textAreaValueNumber, setTextAreaValueNumber] = useState(0);
@@ -18,7 +19,7 @@ const Keyboard = () => {
   // change text area
   const handlechangeTextArea = (e) => {
     setTextAreaValue(e.target.value);
-    calcTotal();
+    // calcTotal();
   };
 
   // handle click keys
@@ -32,22 +33,30 @@ const Keyboard = () => {
   const calcTotal = () => {
     let total = 0;
     let newSelectedLetters = [];
-    if (textAreaValue) {
-      for (let i = 0; i < [...textAreaValue].length; i++) {
-        let letter = data.find((l) => l.item === [...textAreaValue][i]);
-        total += letter.value;
-        newSelectedLetters.push(letter);
+    try {
+      if (textAreaValue) {
+        for (let i = 0; i < [...textAreaValue].length; i++) {
+          let letter = data.find((l) => l.item === [...textAreaValue][i]);
+          total += letter.value;
+          newSelectedLetters.push(letter);
+        }
       }
+      setSelectedLetter(newSelectedLetters);
+      setTextAreaValueNumber(total);
+    } catch (error) {
+      alert('يرجى استعمال احرف عربية غير مشكولة');
     }
-    setSelectedLetter(newSelectedLetters);
-    setTextAreaValueNumber(total);
   };
   useEffect(() => {
     calcTotal();
   }, [textAreaValue.length]);
+  useEffect(() => {
+    textAreaRef.current.focus();
+  }, []);
   return (
     <div className="app_container">
       <textarea
+        ref={textAreaRef}
         className="screen"
         value={textAreaValue}
         onChange={handlechangeTextArea}
@@ -76,7 +85,7 @@ const Keyboard = () => {
           if (name === "space") {
             return (
               <div className="keyboard_row">
-                <br/>
+                <br />
                 <button
                   key={"space"}
                   className={"keyboard_key key_space"}
