@@ -54,6 +54,14 @@ const Keyboard = () => {
   useEffect(() => {
     textAreaRef.current.focus();
   }, []);
+
+  function getSumOfDigits(num) {
+    return String(num)
+      .split('')
+      .reduce((accumulator, digit) => {
+        return accumulator + Number(digit);
+      }, 0);
+  }
   return (
     <div className="app_container">
       <textarea
@@ -65,7 +73,9 @@ const Keyboard = () => {
         cols={5}
       />
 
-      <p className="screen_number"> {textAreaValueNumber}</p>
+      <p className="screen_number"> {textAreaValueNumber} :المجموع</p>
+
+      <p className="screen_number"> {getSumOfDigits(textAreaValueNumber)} :بلاختزال</p>
 
       <div className="letters_container">
         {initialData?.map(({ name ,item, value }) => {
