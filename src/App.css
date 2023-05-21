@@ -27,6 +27,9 @@
   order: 1;
   background: moccasin;
   width: 30%;
+  justify-content: center;
+  text-align: center;
+  overflow: auto;
 }
 .keyboard {
   display: flex;
@@ -57,12 +60,13 @@
 .letter_container {
   display: inline-block;
   text-align: center;
-  margin: 1rem;
+ 
   font-size: 1rem;
 }
 .letter_input {
   display: inline-block;
   width: 50px;
+  margin: 0.5rem 0;
   padding: 0.5rem, 0.5rem;
   vertical-align: middle;
 }
