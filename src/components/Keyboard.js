@@ -75,7 +75,7 @@ const Keyboard = () => {
 
       <p className="screen_number"> {textAreaValueNumber} :المجموع</p>
 
-      <p className="screen_number"> {getSumOfDigits(textAreaValueNumber)} :بلاختزال</p>
+      <p className="screen_number"> {getSumOfDigits(textAreaValueNumber)} :بالاختزال</p>
 
       <div className="letters_container">
         {initialData?.map(({ name ,item, value }) => {
