@@ -77,11 +77,17 @@ const Keyboard = () => {
 
       <p className="screen_number"> {getSumOfDigits(textAreaValueNumber)} :بالاختزال</p>
 
-      <div className="letters_container">
+      <div className="left_side">
+        <div className="letters_container">
         {initialData?.map(({ name ,item, value }) => {
           if (name !== "space") {
             return (
+                <>
+              {item === "ي" || item=="ق" || item ==='غ' ? <br/> :null}
               <div key={item} className="letter_container">
+              
+                <p className="letter_input">{item}</p>
+                <br/>
                 <input
                   className="letter_input"
                   value={value}
@@ -89,11 +95,12 @@ const Keyboard = () => {
                   name={item}
                   onChange={handleChange}
                 />
-                <p className="letter_input">{item}</p>
               </div>
+              </>
             );
           }
         })}
+        </div>
       </div>
       <div className="keyboard">
         {initialData?.map(({ name, item, value }) => {
