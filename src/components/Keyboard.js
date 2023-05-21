@@ -79,7 +79,7 @@ const Keyboard = () => {
 
       <div className="left_side">
         <div className="letters_container">
-        {initialData?.map(({ name ,item, value }) => {
+        {initialData?.filter(item => item.group === 1).map(({ name ,item, value }) => {
           if (name !== "space") {
             return (
                 <>
