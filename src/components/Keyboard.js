@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import getSumOfDigits from '../utils'
 import data from "../data";
 const Keyboard = () => {
   const textAreaRef = useRef(null);
@@ -9,7 +10,7 @@ const Keyboard = () => {
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    const objIndex = initialData.findIndex((obj) => obj.item == name);
+    const objIndex = initialData.findIndex((obj) => obj.item === name);
     const newState = [...initialData];
     newState[objIndex].value = value;
 
@@ -38,7 +39,7 @@ const Keyboard = () => {
         for (let i = 0; i < [...textAreaValue].length; i++) {
           let letter = data.find((l) => l.item === [...textAreaValue][i]);
           total += parseInt(letter.value);
-          console.log(total)
+      
           newSelectedLetters.push(letter);
         }
       }
@@ -55,13 +56,7 @@ const Keyboard = () => {
     textAreaRef.current.focus();
   }, []);
 
-  function getSumOfDigits(num) {
-    return String(num)
-      .split('')
-      .reduce((accumulator, digit) => {
-        return accumulator + Number(digit);
-      }, 0);
-  }
+  
   return (
     <div className="app_container">
       <textarea
@@ -83,7 +78,7 @@ const Keyboard = () => {
           if (name !== "space") {
             return (
                 <>
-              {item === "ي" || item=="ق" || item ==='غ' ? <br/> :null}
+              {item === "ي" || item==="ق" || item ==='غ' ? <br/> :null}
               <div key={item} className="letter_container">
               
                 <p className="letter_input">{item}</p>
